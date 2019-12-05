@@ -60,10 +60,10 @@
     <mat-form-field class="p-12" fxFlex="50">
       <input matInput placeholder="Mobile Number" pattern="^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$"
         formControlName="contactNumber">
-      <mat-error
+      <!-- <mat-error
         *ngIf="userMainFormGroup.get('contactNumber').touched && userMainFormGroup.get('contactNumber').hasError('required')">
         Mobile Number is required
-      </mat-error>
+      </mat-error> -->
       <mat-error *ngIf="userMainFormGroup.get('contactNumber').touched && !userMainFormGroup.get('contactNumber').hasError('required') &&
                 userMainFormGroup.get('contactNumber').hasError('pattern')">
         Please enter a valid Mobile Number
@@ -85,7 +85,8 @@
 
     <div class="p-12" fxFlex="50">
         <button type="button" mat-button color="accent" (click)="imgFileInput.click()">Choose Profile
-            <mat-icon>image</mat-icon>
+            <img src="/assets/images/icons/image.png"style="height: 20px;width: 20px;">
+            <!-- <mat-icon>image</mat-icon> -->
         </button>
         <span class="selectProfileClass">{{fileToUpload?.name}}</span>
         <input hidden type="file" #imgFileInput id="file" accept=".jpg,.jpeg,.png" (change)="handleFileInput($event)"/>
