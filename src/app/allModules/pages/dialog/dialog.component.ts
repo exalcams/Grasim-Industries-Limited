@@ -43,7 +43,7 @@ export class DialogComponent implements OnInit {
         this.ConfigurationFormGroup = this.formBuilder.group({
             // AutoSign: ['', Validators.required],
             DocumentType: ['', Validators.required],
-            Config1: ['', Validators.required],
+            Config1: [''],
             Config2: ['', Validators.required],
             Config3: ['', Validators.required],
             Authority: ['', Validators.required],
