@@ -64,12 +64,12 @@ export class DialogComponent implements OnInit {
     ngOnInit(): void {
         this.GetAllCertificateFromStore();
         this.GetAllAuthoritys();
-       // console.log(this.DSSConfigurationData);
+        console.log(this.DSSConfigurationData);
         if (this.DSSConfigurationData) {
             this.ConfigurationFormGroup.setValue({
                 // AutoSign: this.DSSConfigurationData.AUTOSIGN ? '1' : '0',
                 // SignedAuthority: this.DSSConfigurationData.AUTHORITY,
-                DocumentType: this.DSSConfigurationData.CONFIG2,
+                DocumentType: this.DSSConfigurationData.DOCTYPE,
                 Config1: this.DSSConfigurationData.CONFIG1,
                 Config2: this.DSSConfigurationData.CONFIG2,
                 Config3: this.DSSConfigurationData.CONFIG3,
@@ -79,6 +79,7 @@ export class DialogComponent implements OnInit {
                 DisplayTitle1: this.DSSConfigurationData.DISPLAYTITLE1,
                 DisplayTitle2: this.DSSConfigurationData.DISPLAYTITLE2
             });
+            this.selectedDocumentType = this.DSSConfigurationData.DOCTYPE;
         } else {
             this.DSSConfigurationData = new DSSConfiguration();
             this.ResetControl();
@@ -171,7 +172,7 @@ export class DialogComponent implements OnInit {
     YesClicked(): void {
         if (this.ConfigurationFormGroup.valid) {
             const expDate = this.datepipe.transform(this.ConfigurationFormGroup.get('ExpiryDate').value, 'dd-MM-yyyy');
-            // this.DSSConfigurationData.DOCTYPE = this.ConfigurationFormGroup.get('DocumentType').value;
+            this.DSSConfigurationData.DOCTYPE = this.selectedDocumentType;
             // this.DSSConfigurationData.Plant_ID = this.ConfigurationFormGroup.get('Plant').value;
             this.DSSConfigurationData.CONFIG1 = this.ConfigurationFormGroup.get('Config1').value;
             this.DSSConfigurationData.CONFIG2 = this.ConfigurationFormGroup.get('Config2').value;
@@ -197,6 +198,14 @@ export class DialogComponent implements OnInit {
         this.matDialogRef.close(null);
     }
     GetDocumentType(documentType: string): void {
+        this.selectedDocumentType = documentType;
         this.ConfigurationFormGroup.controls['Config1'].setValue(documentType);
+        // this.SelectOutPutType = null;
+        // if (this.selectedDocumentType === 'INV') {
+        //     this.ConfigurationFormGroup.controls['Config1'].setValue(documentType);
+        // }
+        // if (this.selectedDocumentType === 'FI') {
+        //     this.ConfigurationFormGroup.controls['Config1'].setValue(null);
+        // }
     }
 }
