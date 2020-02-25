@@ -275,6 +275,16 @@ export class LoginComponent implements OnInit {
       }
       );
     }
+    if (this.MenuItems.indexOf('GateExitLog') >= 0) {
+      this.reportsSubChildren.push(
+        {
+          id: 'GateExitLog',
+          title: 'Gate Exit Log',
+          type: 'item',
+          url: '/reports/gateExitLog'
+        }
+      );
+    }
     if (this.MenuItems.indexOf('LoginHistory') >= 0) {
       this.reportsSubChildren.push(
         {
