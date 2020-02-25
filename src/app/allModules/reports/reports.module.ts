@@ -56,11 +56,16 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ReportService } from 'app/services/report.service';
 import { LoginHistoryComponent } from './login-history/login-history.component';
+import { GateExitLogComponent } from './gate-exit-log/gate-exit-log.component';
 
 const routes = [
     {
         path: 'loginHistory',
         component: LoginHistoryComponent
+    },
+    {
+        path: 'gateExitLog',
+        component: GateExitLogComponent
     },
     {
         path: '**',
@@ -121,7 +126,7 @@ const routes = [
 
         FormsModule,
     ],
-    declarations: [LoginHistoryComponent],
+    declarations: [LoginHistoryComponent, GateExitLogComponent],
     providers: [ReportService],
     entryComponents: [
     ]
