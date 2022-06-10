@@ -11,7 +11,7 @@
 
     <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
         <form name="ConfigurationForm" [formGroup]="ConfigurationFormGroup" fxLayout="column" fxFlex>
-            <mat-form-field>
+            <!-- <mat-form-field>
                 <mat-select placeholder="Document Type" [(value)]="selectedDocumentType"
                     (selectionChange)="GetDocumentType($event.value)" formControlName="DocumentType"
                     [disabled]="DSSConfigurationData.CONFIG_ID" required>
@@ -22,10 +22,10 @@
                     *ngIf="ConfigurationFormGroup.get('DocumentType').touched && ConfigurationFormGroup.get('DocumentType').hasError('required')">
                     DocumentType is required
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-form-field>
                 <input matInput name="Config1" placeholder="Configuaration 1(Document Type)" formControlName="Config1"
-                    readonly>
+                    >
                 <!-- <mat-error *ngIf="ConfigurationFormGroup.get('Config1').touched && ConfigurationFormGroup.get('Config1').hasError('required')">
                     Configuaration 1 is required
                 </mat-error> -->
@@ -37,36 +37,27 @@
                     Configuaration 1 is required
                 </mat-error>
             </mat-form-field> -->
-            <mat-form-field *ngIf="selectedDocumentType == 'INV'">
-                <input matInput name="Config2" placeholder="Configuaration 2(Division)" formControlName="Config2"
-                    [readonly]="DSSConfigurationData.CONFIG_ID">
+            <mat-form-field>
+                <input matInput name="Config2" placeholder="Configuaration 2(Division)" formControlName="Config2">
                 <mat-error
                     *ngIf="ConfigurationFormGroup.get('Config2').touched && ConfigurationFormGroup.get('Config2').hasError('required')">
                     Configuaration 2 is required
                 </mat-error>
             </mat-form-field>
-            <mat-form-field *ngIf="selectedDocumentType == 'FI'">
-                <input matInput name="Config2" placeholder="Configuaration 2(Company Code)" formControlName="Config2"
-                    [readonly]="DSSConfigurationData.CONFIG_ID">
-                <mat-error
-                    *ngIf="ConfigurationFormGroup.get('Config2').touched && ConfigurationFormGroup.get('Config2').hasError('required')">
-                    Configuaration 2 is required
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field *ngIf="selectedDocumentType == 'INV'">
+            <!-- <mat-form-field>
                 <mat-select placeholder="Configuaration 3(Output Type)" [(value)]="SelectOutPutType" 
-                    formControlName="Config3" [disabled]="DSSConfigurationData.CONFIG_ID" required>
-                    <!-- <mat-option>None</mat-option> -->
+                    formControlName="Config3" [disabled]="DSSConfigurationData.CONFIG_ID">
+                    <mat-option>None</mat-option>
                     <mat-option value="ZDES">ZDES</mat-option>
-                    <!-- <mat-option value="ZCUS" *ngIf="selectedDocumentType == 'FI'">ZCUS</mat-option>
-                    <mat-option value="ZVEN" *ngIf="selectedDocumentType == 'FI'">ZVEN</mat-option> -->
+                    <mat-option value="ZCUS" *ngIf="selectedDocumentType == 'FI'">ZCUS</mat-option>
+                    <mat-option value="ZVEN" *ngIf="selectedDocumentType == 'FI'">ZVEN</mat-option>
                 </mat-select>
                 <mat-error
                     *ngIf="ConfigurationFormGroup.get('Config3').touched && ConfigurationFormGroup.get('Config3').hasError('required')">
                     Configuaration 3 is required
                 </mat-error>
-            </mat-form-field>
-            <mat-form-field *ngIf="selectedDocumentType == 'FI'">
+            </mat-form-field> -->
+            <!-- <mat-form-field *ngIf="selectedDocumentType == 'FI'">
                 <mat-select placeholder="Configuaration 3(Output Type)" [(value)]="SelectOutPutType" 
                     formControlName="Config3" [disabled]="DSSConfigurationData.CONFIG_ID" required>
                     <mat-option value="ZCUS" >ZCUS</mat-option>
@@ -76,13 +67,13 @@
                     *ngIf="ConfigurationFormGroup.get('Config3').touched && ConfigurationFormGroup.get('Config3').hasError('required')">
                     Configuaration 3 is required
                 </mat-error>
-            </mat-form-field>
-            <!-- <mat-form-field>
+            </mat-form-field> -->
+            <mat-form-field>
                 <input matInput name="Config3" placeholder="Configuaration 3(Output Type)" formControlName="Config3">
                 <mat-error *ngIf="ConfigurationFormGroup.get('Config3').touched && ConfigurationFormGroup.get('Config3').hasError('required')">
                     Configuaration 3 is required
                 </mat-error>
-            </mat-form-field> -->
+            </mat-form-field>
             <!-- <div style="margin:10px 0px;color: rgba(0, 0, 0, 0.54)">
                 <mat-label class="h3">Auto sign * </mat-label>
                 <mat-radio-group formControlName="AutoSign" required>

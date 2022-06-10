@@ -42,14 +42,14 @@ export class DialogComponent implements OnInit {
         // Set the defaults
         this.ConfigurationFormGroup = this.formBuilder.group({
             // AutoSign: ['', Validators.required],
-            DocumentType: ['', Validators.required],
-            Config1: [''],
+            // DocumentType: ['', Validators.required],
+            Config1: ['',Validators.required],
             Config2: ['', Validators.required],
             Config3: ['', Validators.required],
             Authority: ['', Validators.required],
             CertificateName: ['', Validators.required],
             ExpiryDate: ['', Validators.required],
-            DisplayTitle1: ['', Validators.required],
+            DisplayTitle1: [''],
             DisplayTitle2: ['']
         });
         // this.CurrentDSSConfiguration = new DSSConfiguration();
@@ -69,7 +69,7 @@ export class DialogComponent implements OnInit {
             this.ConfigurationFormGroup.setValue({
                 // AutoSign: this.DSSConfigurationData.AUTOSIGN ? '1' : '0',
                 // SignedAuthority: this.DSSConfigurationData.AUTHORITY,
-                DocumentType: this.DSSConfigurationData.DOCTYPE,
+                // DocumentType: this.DSSConfigurationData.DOCTYPE,
                 Config1: this.DSSConfigurationData.CONFIG1,
                 Config2: this.DSSConfigurationData.CONFIG2,
                 Config3: this.DSSConfigurationData.CONFIG3,
@@ -172,7 +172,7 @@ export class DialogComponent implements OnInit {
     YesClicked(): void {
         if (this.ConfigurationFormGroup.valid) {
             const expDate = this.datepipe.transform(this.ConfigurationFormGroup.get('ExpiryDate').value, 'dd-MM-yyyy');
-            this.DSSConfigurationData.DOCTYPE = this.selectedDocumentType;
+            this.DSSConfigurationData.DOCTYPE = this.ConfigurationFormGroup.get('Config1').value;
             // this.DSSConfigurationData.Plant_ID = this.ConfigurationFormGroup.get('Plant').value;
             this.DSSConfigurationData.CONFIG1 = this.ConfigurationFormGroup.get('Config1').value;
             this.DSSConfigurationData.CONFIG2 = this.ConfigurationFormGroup.get('Config2').value;
